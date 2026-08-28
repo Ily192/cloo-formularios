@@ -101,7 +101,7 @@
     <div class="acciones">
       <button id="generar">Generar los cuatro QR</button>
       <button id="imprimir" class="sec">Imprimir hoja</button>
-      <button id="descargar" class="sec">Descargar todos</button>
+      <button id="descargar" class="sec">Descargar los cuatro en una hoja</button>
     </div>
   </div>
 
@@ -204,24 +204,66 @@
       boton.addEventListener('click', function () {
         var lienzo = caja.querySelector('canvas');
         if (!lienzo) return;
-        var a = document.createElement('a');
-        a.href = lienzo.toDataURL('image/png');
-        a.download = 'qr-' + s.clave + (evento ? '-' + evento : '') + '.png';
-        a.click();
+        descargar(lienzo, 'qr-' + s.clave + (evento ? '-' + evento : '') + '.png');
       });
     });
   }
 
+  /* Descarga un lienzo como archivo.
+     El enlace se inserta en el documento antes de pulsarlo: si no forma parte
+     del DOM, varios navegadores ignoran el click y no descargan nada. */
+  function descargar(lienzo, nombre) {
+    lienzo.toBlob(function (blob) {
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = nombre;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 1000);
+    }, 'image/png');
+  }
+
+  /* Los cuatro en UNA sola imagen, no en cuatro descargas.
+     El navegador bloquea las descargas multiples seguidas y pide permiso,
+     asi que "descargar todos" no llegaba a bajar nada. Una hoja unica
+     ademas es lo que se manda a imprimir. */
   function descargarTodos() {
-    var botones = document.querySelectorAll('.tarjeta button');
-    if (!botones.length) { decir('Primero genera los QR.'); return; }
-    // En serie: varios clics simultáneos hacen que el navegador ignore algunos.
-    var i = 0;
-    (function siguiente() {
-      if (i >= botones.length) return;
-      botones[i++].click();
-      setTimeout(siguiente, 350);
-    })();
+    var tarjetas = [].slice.call(document.querySelectorAll('.tarjeta'));
+    if (!tarjetas.length) { decir('Primero genera los QR.'); return; }
+
+    var evento = limpiarEvento($('#evento').value);
+    var QR = 460, PAD = 40, TIT = 54, COL = 2;
+    var filas = Math.ceil(tarjetas.length / COL);
+    var celdaW = QR + PAD * 2;
+    var celdaH = QR + TIT + PAD * 2;
+
+    var hoja = document.createElement('canvas');
+    hoja.width = celdaW * COL;
+    hoja.height = celdaH * filas;
+    var ctx = hoja.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, hoja.width, hoja.height);
+
+    tarjetas.forEach(function (t, i) {
+      var lienzo = t.querySelector('canvas');
+      if (!lienzo) return;
+      var x = (i % COL) * celdaW;
+      var y = Math.floor(i / COL) * celdaH;
+
+      ctx.fillStyle = '#251629';
+      ctx.font = '600 30px Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(t.querySelector('h3').textContent, x + celdaW / 2, y + PAD + 20);
+
+      ctx.drawImage(lienzo, x + PAD, y + TIT + PAD, QR, QR);
+    });
+
+    descargar(hoja, 'qr-cloo' + (evento ? '-' + evento : '') + '.png');
   }
 
   $('#generar').addEventListener('click', generar);
