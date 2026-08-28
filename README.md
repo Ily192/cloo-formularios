@@ -89,4 +89,6 @@ cualquiera que abra el código de la página lo ve. Filtra envíos automáticos 
 autenticación. Lo que contiene el abuso es el límite de 20 envíos por minuto por IP del
 receptor, más el campo trampa invisible del formulario.
 
-Aun así este repositorio es privado, para no ponérselo fácil a nadie.
+El repositorio es público: aquí no hay nada que no viaje ya al navegador de quien abre
+un formulario. Lo que sí debe seguir fuera de aquí son las claves del servidor y de la
+base de datos, que viven en el `.env` del receptor, en el propio servidor.
