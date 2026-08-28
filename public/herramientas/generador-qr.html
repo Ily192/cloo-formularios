@@ -141,14 +141,34 @@
       .replace(/^-+|-+$/g, '');
   }
 
+  /* Se queda solo con el dominio y descarta cualquier ruta pegada por error.
+     Si alguien copia aqui la direccion de un formulario ya abierto
+     (.../performance) en vez del dominio, sin esto los QR salen apuntando a
+     /performance/entertainment y al escanearlos dan "no encontrado". */
+  function limpiarBase(v) {
+    v = (v || '').trim();
+    if (!v) { return ''; }
+    if (!/^https?:\/\//i.test(v)) { v = 'https://' + v; }
+    try {
+      return new URL(v).origin;
+    } catch (e) {
+      return v.replace(/\/+$/, '');
+    }
+  }
+
   function urlDe(base, archivo, evento) {
     var u = base.replace(/\/+$/, '') + '/' + archivo;
     return evento ? u + '?evento=' + encodeURIComponent(evento) : u;
   }
 
   function generar() {
-    var base = $('#base').value.trim();
+    var crudo = $('#base').value;
+    var base = limpiarBase(crudo);
     var evento = limpiarEvento($('#evento').value);
+
+    if (base && base !== crudo.trim().replace(/\/+$/, '')) {
+      $('#base').value = base;
+    }
 
     if (!base) { decir('Falta la dirección donde están los formularios.'); return; }
     if (!/^https?:\/\//i.test(base)) { decir('La dirección debe empezar por https://'); return; }
