@@ -1,0 +1,10 @@
+# El repositorio se edita en Windows pero se despliega en Linux dentro de un
+# contenedor. Sin esto, los saltos de linea CRLF acaban en la configuracion de
+# nginx y en los HTML, y nginx puede rechazar directivas por ese motivo.
+* text=auto eol=lf
+
+# Binarios, intactos.
+*.png binary
+*.jpg binary
+*.pdf binary
+*.woff2 binary
