@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>CLOO Performance</title>
+<link rel="stylesheet" href="assets/form-kit.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="topbar">
+    <span class="brandmark">CLOO</span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <div class="form-wrap">
+
+    <header class="hero">
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n="title"></h1>
+      <p data-i18n="intro"></p>
+      <span class="event-badge"></span>
+    </header>
+
+    <div class="form-err" role="alert"></div>
+
+    <form class="card" novalidate>
+
+      <div class="hp" aria-hidden="true">
+        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nombre"><span data-i18n="f_name"></span><span class="req">*</span></label>
+        <input type="text" id="nombre" name="nombre" data-req autocomplete="name" data-i18n-ph="ph_name">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="email"><span data-i18n="f_email"></span><span class="req">*</span></label>
+        <input type="email" id="email" name="email" data-req autocomplete="email" inputmode="email"
+               autocapitalize="off" spellcheck="false" data-i18n-ph="ph_email_work">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="telefono"><span data-i18n="f_phone"></span><span class="req">*</span></label>
+        <input type="tel" id="telefono" name="telefono" data-req autocomplete="tel" inputmode="tel"
+               data-i18n-ph="ph_phone">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="empresa"><span data-i18n="f_company"></span><span class="req">*</span></label>
+        <input type="text" id="empresa" name="empresa" data-req autocomplete="organization" data-i18n-ph="ph_company">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="sector"><span data-i18n="f_industry"></span><span class="req">*</span></label>
+        <select id="sector" name="sector" data-req>
+          <option value=""            data-i18n="opt_pick"></option>
+          <option value="real_estate" data-i18n="ind_real_estate"></option>
+          <option value="finance"     data-i18n="ind_finance"></option>
+          <option value="health"      data-i18n="ind_health"></option>
+          <option value="b2b_sales"   data-i18n="ind_b2b_sales"></option>
+          <option value="retail"      data-i18n="ind_retail"></option>
+          <option value="tech"        data-i18n="ind_tech"></option>
+          <option value="education"   data-i18n="ind_education"></option>
+          <option value="services"    data-i18n="ind_services"></option>
+          <option value="hospitality" data-i18n="ind_hospitality"></option>
+          <option value="government"  data-i18n="ind_government"></option>
+          <option value="other"       data-i18n="ind_other"></option>
+        </select>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="cargo"><span data-i18n="f_role"></span><span class="req">*</span></label>
+        <select id="cargo" name="cargo" data-req>
+          <option value=""            data-i18n="opt_pick"></option>
+          <option value="ceo"         data-i18n="role_ceo"></option>
+          <option value="founder"     data-i18n="role_founder"></option>
+          <option value="c_level"     data-i18n="role_c_level"></option>
+          <option value="hr"          data-i18n="role_hr"></option>
+          <option value="manager"     data-i18n="role_manager"></option>
+          <option value="consultant"  data-i18n="role_consultant"></option>
+          <option value="other"       data-i18n="role_other"></option>
+        </select>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_team_size"></span><span class="req">*</span></label>
+        <div class="chips" data-name="tamano_equipo" data-req>
+          <button type="button" class="chip" data-value="1_10"   aria-pressed="false">1–10</button>
+          <button type="button" class="chip" data-value="11_50"  aria-pressed="false">11–50</button>
+          <button type="button" class="chip" data-value="51_200" aria-pressed="false">51–200</button>
+          <button type="button" class="chip" data-value="gt200"  aria-pressed="false">200+</button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_challenge"></span><span class="req">*</span>
+          <span class="hint" data-i18n="f_challenge_hint"></span>
+        </label>
+        <div class="chips stack" data-name="reto" data-req>
+          <button type="button" class="chip" data-value="burnout_turnover" aria-pressed="false" data-i18n="rt_burnout"></button>
+          <button type="button" class="chip" data-value="culture"          aria-pressed="false" data-i18n="rt_culture"></button>
+          <button type="button" class="chip" data-value="leadership"       aria-pressed="false" data-i18n="rt_leadership"></button>
+          <button type="button" class="chip" data-value="productivity"     aria-pressed="false" data-i18n="rt_productivity"></button>
+          <button type="button" class="chip" data-value="restructuring"    aria-pressed="false" data-i18n="rt_restructuring"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_intervention"></span><span class="req">*</span></label>
+        <div class="chips stack" data-name="intervencion" data-req>
+          <button type="button" class="chip" data-value="workshop" aria-pressed="false" data-i18n="iv_workshop"></button>
+          <button type="button" class="chip" data-value="program"  aria-pressed="false" data-i18n="iv_program"></button>
+          <button type="button" class="chip" data-value="keynote"  aria-pressed="false" data-i18n="iv_keynote"></button>
+          <button type="button" class="chip" data-value="advisory" aria-pressed="false" data-i18n="iv_advisory"></button>
+          <button type="button" class="chip" data-value="unsure"   aria-pressed="false" data-i18n="iv_unsure"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_when"></span><span class="req">*</span></label>
+        <div class="chips stack" data-name="cuando" data-req>
+          <button type="button" class="chip" data-value="now"       aria-pressed="false" data-i18n="when_now"></button>
+          <button type="button" class="chip" data-value="month"     aria-pressed="false" data-i18n="when_month"></button>
+          <button type="button" class="chip" data-value="quarter"   aria-pressed="false" data-i18n="when_quarter"></button>
+          <button type="button" class="chip" data-value="exploring" aria-pressed="false" data-i18n="when_exploring"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_contact_pref"></span></label>
+        <div class="chips" data-name="preferencia_contacto">
+          <button type="button" class="chip" data-value="whatsapp" aria-pressed="false" data-i18n="cp_whatsapp"></button>
+          <button type="button" class="chip" data-value="call"     aria-pressed="false" data-i18n="cp_call"></button>
+          <button type="button" class="chip" data-value="email"    aria-pressed="false" data-i18n="cp_email"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nota"><span data-i18n="f_note"></span></label>
+        <textarea id="nota" name="nota" data-i18n-ph="ph_note"></textarea>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="consent">
+          <input type="checkbox" name="consentimiento" data-req>
+          <span data-i18n="consent"></span>
+        </label>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="submit" data-i18n="submit"></button>
+        <p class="legal" data-i18n="legal"></p>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="done">
+    <div class="mark"></div>
+    <h2 data-i18n="done_title"></h2>
+    <p data-i18n="done_text"></p>
+    <div class="queued" data-i18n="queued"></div>
+    <button type="button" class="again" data-i18n="again"></button>
+  </div>
+
+  <footer>CLOO · Performance</footer>
+</div>
+
+<script>
+window.FORM_CONFIG = {
+  formId: 'performance',
+  servicio: 'performance',
+  linea: 'B2B',
+  defaultLang: 'es',
+  i18n: {
+    es: {
+      page_title: 'CLOO Performance',
+      eyebrow: 'CLOO Performance',
+      title: 'Equipos que rinden sin quemarse',
+      intro: 'Acompañamos la reestructuración y el alto desempeño empresarial: liderazgo, clima y productividad, con herramientas que el equipo puede sostener. Cuéntanos dónde está el cuello de botella.',
+
+      ph_email_work: 'nombre@empresa.com',
+      ph_company: 'Nombre de la empresa',
+
+      f_industry: '¿A qué sector pertenece?',
+      ind_real_estate: 'Bienes raíces',
+      ind_finance: 'Seguros y finanzas',
+      ind_health: 'Salud y bienestar',
+      ind_b2b_sales: 'Ventas corporativas (B2B)',
+      ind_retail: 'Comercio al detalle',
+      ind_tech: 'Tecnología y software',
+      ind_education: 'Educación y formación',
+      ind_services: 'Servicios profesionales',
+      ind_hospitality: 'Hotelería y restaurantes',
+      ind_government: 'Gobierno y organizaciones sin fines de lucro',
+      ind_other: 'Otro',
+
+      f_role: '¿Cuál es tu rol?',
+      role_ceo: 'CEO / Directora ejecutiva',
+      role_founder: 'Fundadora / Cofundadora',
+      role_c_level: 'Ejecutiva C-Level (COO, CFO, CMO, CTO)',
+      role_hr: 'Recursos humanos / Talento',
+      role_manager: 'Gerente / Directora de área',
+      role_consultant: 'Consultora / Asesora externa',
+      role_other: 'Otro',
+
+      f_team_size: '¿Cuántas personas hay en el equipo?',
+
+      f_challenge: '¿Cuál es el reto principal hoy?',
+      f_challenge_hint: 'Elige el que más duele. Lo demás sale en la conversación.',
+      rt_burnout: 'Equipo agotado o rotación alta',
+      rt_culture: 'Clima laboral y comunicación',
+      rt_leadership: 'Liderazgo y toma de decisiones',
+      rt_productivity: 'Productividad y foco',
+      rt_restructuring: 'Reestructuración o cambio organizacional',
+
+      f_intervention: '¿Qué tipo de intervención te interesa?',
+      iv_workshop: 'Taller o experiencia puntual',
+      iv_program: 'Programa continuo',
+      iv_keynote: 'Conferencia o keynote',
+      iv_advisory: 'Asesoría de reestructuración',
+      iv_unsure: 'Aún no sé, quiero explorarlo',
+
+      done_text: 'Recibido. Te contactamos en las próximas 48 horas para entender el contexto y proponerte un formato.'
+    },
+    en: {
+      page_title: 'CLOO Performance',
+      eyebrow: 'CLOO Performance',
+      title: 'Teams that perform without burning out',
+      intro: 'We support business restructuring and high performance: leadership, culture and productivity, with tools the team can actually sustain. Tell us where the bottleneck is.',
+
+      ph_email_work: 'name@company.com',
+      ph_company: 'Company name',
+
+      f_industry: 'What industry is it in?',
+      ind_real_estate: 'Real estate',
+      ind_finance: 'Insurance & finance',
+      ind_health: 'Healthcare & wellness',
+      ind_b2b_sales: 'Corporate sales (B2B)',
+      ind_retail: 'Retail',
+      ind_tech: 'Tech & software',
+      ind_education: 'Education & training',
+      ind_services: 'Professional services',
+      ind_hospitality: 'Hospitality & restaurants',
+      ind_government: 'Government & non-profits',
+      ind_other: 'Other',
+
+      f_role: 'What is your role?',
+      role_ceo: 'CEO / Managing Director',
+      role_founder: 'Founder / Co-founder',
+      role_c_level: 'C-Level Executive (COO, CFO, CMO, CTO)',
+      role_hr: 'HR / Talent',
+      role_manager: 'Manager / Department Director',
+      role_consultant: 'External consultant / Advisor',
+      role_other: 'Other',
+
+      f_team_size: 'How many people are on the team?',
+
+      f_challenge: 'What is the main challenge today?',
+      f_challenge_hint: 'Pick the one that hurts most. The rest comes out in conversation.',
+      rt_burnout: 'Burned-out team or high turnover',
+      rt_culture: 'Workplace culture and communication',
+      rt_leadership: 'Leadership and decision-making',
+      rt_productivity: 'Productivity and focus',
+      rt_restructuring: 'Restructuring or organizational change',
+
+      f_intervention: 'What kind of engagement are you looking for?',
+      iv_workshop: 'One-off workshop or experience',
+      iv_program: 'Ongoing program',
+      iv_keynote: 'Keynote or conference talk',
+      iv_advisory: 'Restructuring advisory',
+      iv_unsure: 'Not sure yet, I want to explore',
+
+      done_text: 'Received. We will reach out within 48 hours to understand the context and propose a format.'
+    }
+  }
+};
+</script>
+<script src="assets/form-kit.js"></script>
+</body>
+</html>

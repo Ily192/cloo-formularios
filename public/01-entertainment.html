@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>CIELO Entertainment</title>
+<link rel="stylesheet" href="assets/form-kit.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="topbar">
+    <span class="brandmark">CLOO</span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <div class="form-wrap">
+
+    <header class="hero">
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n="title"></h1>
+      <p data-i18n="intro"></p>
+      <span class="event-badge"></span>
+    </header>
+
+    <div class="form-err" role="alert"></div>
+
+    <form class="card" novalidate>
+
+      <div class="hp" aria-hidden="true">
+        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nombre"><span data-i18n="f_name"></span><span class="req">*</span></label>
+        <input type="text" id="nombre" name="nombre" data-req autocomplete="name" data-i18n-ph="ph_name">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="email"><span data-i18n="f_email"></span><span class="req">*</span></label>
+        <input type="email" id="email" name="email" data-req autocomplete="email" inputmode="email"
+               autocapitalize="off" spellcheck="false" data-i18n-ph="ph_email">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="telefono"><span data-i18n="f_phone"></span><span class="req">*</span></label>
+        <input type="tel" id="telefono" name="telefono" data-req autocomplete="tel" inputmode="tel"
+               data-i18n-ph="ph_phone">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_who"></span><span class="req">*</span></label>
+        <div class="chips stack" data-name="destinatario" data-req>
+          <button type="button" class="chip" data-value="empresa"    aria-pressed="false" data-i18n="who_company"></button>
+          <button type="button" class="chip" data-value="particular" aria-pressed="false" data-i18n="who_private"></button>
+          <button type="button" class="chip" data-value="agencia"    aria-pressed="false" data-i18n="who_agency"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field" data-show-when="destinatario=empresa|agencia">
+        <label class="label" for="empresa"><span data-i18n="f_company"></span></label>
+        <input type="text" id="empresa" name="empresa" autocomplete="organization" data-i18n-ph="ph_optional">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_event_type"></span><span class="req">*</span></label>
+        <div class="chips stack" data-name="tipo_evento" data-req>
+          <button type="button" class="chip" data-value="corporate"  aria-pressed="false" data-i18n="et_corporate"></button>
+          <button type="button" class="chip" data-value="wedding"    aria-pressed="false" data-i18n="et_wedding"></button>
+          <button type="button" class="chip" data-value="festival"   aria-pressed="false" data-i18n="et_festival"></button>
+          <button type="button" class="chip" data-value="brand"      aria-pressed="false" data-i18n="et_brand"></button>
+          <button type="button" class="chip" data-value="undecided"  aria-pressed="false" data-i18n="et_undecided"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_service"></span><span class="req">*</span>
+          <span class="hint" data-i18n="f_service_hint"></span>
+        </label>
+        <div class="chips stack" data-name="servicio_interes" data-req>
+          <button type="button" class="chip" data-value="live_show"   aria-pressed="false" data-i18n="sv_live_show"></button>
+          <button type="button" class="chip" data-value="hosting"     aria-pressed="false" data-i18n="sv_hosting"></button>
+          <button type="button" class="chip" data-value="themed"      aria-pressed="false" data-i18n="sv_themed"></button>
+          <button type="button" class="chip" data-value="production"  aria-pressed="false" data-i18n="sv_production"></button>
+          <button type="button" class="chip" data-value="advice"      aria-pressed="false" data-i18n="sv_advice"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_when"></span><span class="req">*</span></label>
+        <div class="chips stack" data-name="cuando" data-req>
+          <button type="button" class="chip" data-value="now"       aria-pressed="false" data-i18n="when_now"></button>
+          <button type="button" class="chip" data-value="month"     aria-pressed="false" data-i18n="when_month"></button>
+          <button type="button" class="chip" data-value="quarter"   aria-pressed="false" data-i18n="when_quarter"></button>
+          <button type="button" class="chip" data-value="exploring" aria-pressed="false" data-i18n="when_exploring"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_size"></span></label>
+        <div class="chips" data-name="asistentes">
+          <button type="button" class="chip" data-value="lt50"    aria-pressed="false">&lt; 50</button>
+          <button type="button" class="chip" data-value="50_150"  aria-pressed="false">50–150</button>
+          <button type="button" class="chip" data-value="150_500" aria-pressed="false">150–500</button>
+          <button type="button" class="chip" data-value="gt500"   aria-pressed="false">500+</button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="lugar"><span data-i18n="f_place"></span></label>
+        <input type="text" id="lugar" name="lugar" data-i18n-ph="ph_place">
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label"><span data-i18n="f_contact_pref"></span></label>
+        <div class="chips" data-name="preferencia_contacto">
+          <button type="button" class="chip" data-value="whatsapp" aria-pressed="false" data-i18n="cp_whatsapp"></button>
+          <button type="button" class="chip" data-value="call"     aria-pressed="false" data-i18n="cp_call"></button>
+          <button type="button" class="chip" data-value="email"    aria-pressed="false" data-i18n="cp_email"></button>
+        </div>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nota"><span data-i18n="f_note"></span></label>
+        <textarea id="nota" name="nota" data-i18n-ph="ph_note"></textarea>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="field">
+        <label class="consent">
+          <input type="checkbox" name="consentimiento" data-req>
+          <span data-i18n="consent"></span>
+        </label>
+        <span class="field-err"></span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="submit" data-i18n="submit"></button>
+        <p class="legal" data-i18n="legal"></p>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="done">
+    <div class="mark"></div>
+    <h2 data-i18n="done_title"></h2>
+    <p data-i18n="done_text"></p>
+    <div class="queued" data-i18n="queued"></div>
+    <button type="button" class="again" data-i18n="again"></button>
+  </div>
+
+  <footer>CLOO · CIELO Entertainment</footer>
+</div>
+
+<script>
+window.FORM_CONFIG = {
+  formId: 'entertainment',
+  servicio: 'entertainment',
+  linea: 'B2B',
+  defaultLang: 'es',
+  i18n: {
+    es: {
+      page_title: 'CIELO Entertainment',
+      eyebrow: 'CIELO Entertainment',
+      title: 'Pongamos tu evento a bailar',
+      intro: 'Shows en vivo, animación y producción artística para eventos que la gente recuerda. Cuéntanos qué estás armando y te preparamos una propuesta a la medida.',
+
+      f_who: '¿Quién organiza el evento?',
+      who_company: 'Una empresa u organización',
+      who_private: 'Yo, es un evento privado',
+      who_agency: 'Una agencia o productora',
+
+      f_event_type: '¿Qué tipo de evento es?',
+      et_corporate: 'Evento corporativo o gala',
+      et_wedding: 'Boda o celebración privada',
+      et_festival: 'Festival o evento público',
+      et_brand: 'Activación de marca',
+      et_undecided: 'Aún por definir',
+
+      f_service: '¿Qué te interesa?',
+      f_service_hint: 'Elige lo principal. Lo demás lo afinamos contigo.',
+      sv_live_show: 'Show de baile en vivo',
+      sv_hosting: 'Animación y conducción',
+      sv_themed: 'Performance temático a medida',
+      sv_production: 'Producción artística completa',
+      sv_advice: 'No sé aún, quiero asesoría',
+
+      f_size: '¿Cuántas personas asistirán, aproximadamente?',
+      f_place: '¿Dónde sería?',
+      ph_place: 'Ciudad o nombre del lugar',
+
+      done_text: 'Ya tenemos los datos de tu evento. Te contactamos con una propuesta en las próximas 48 horas.'
+    },
+    en: {
+      page_title: 'CIELO Entertainment',
+      eyebrow: 'CIELO Entertainment',
+      title: 'Let’s get your event dancing',
+      intro: 'Live shows, hosting and artistic production for events people remember. Tell us what you are putting together and we will build a proposal around it.',
+
+      f_who: 'Who is organizing the event?',
+      who_company: 'A company or organization',
+      who_private: 'Me, it is a private event',
+      who_agency: 'An agency or production company',
+
+      f_event_type: 'What kind of event is it?',
+      et_corporate: 'Corporate event or gala',
+      et_wedding: 'Wedding or private celebration',
+      et_festival: 'Festival or public event',
+      et_brand: 'Brand activation',
+      et_undecided: 'Still to be defined',
+
+      f_service: 'What are you interested in?',
+      f_service_hint: 'Pick the main one. We will fine-tune the rest with you.',
+      sv_live_show: 'Live dance show',
+      sv_hosting: 'Hosting and MC',
+      sv_themed: 'Custom themed performance',
+      sv_production: 'Full artistic production',
+      sv_advice: 'Not sure yet, I want guidance',
+
+      f_size: 'Roughly how many people will attend?',
+      f_place: 'Where would it be?',
+      ph_place: 'City or venue name',
+
+      done_text: 'We have your event details. We will get back to you with a proposal within 48 hours.'
+    }
+  }
+};
+</script>
+<script src="assets/form-kit.js"></script>
+</body>
+</html>

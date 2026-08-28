@@ -1,0 +1,9 @@
+# Nada de configuracion con claves debe entrar aqui.
+.env
+.env.*
+!.env.ejemplo
+
+# Ruido del sistema
+.DS_Store
+Thumbs.db
+node_modules/

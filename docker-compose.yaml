@@ -1,0 +1,34 @@
+# CLOO · Formularios de captura de leads
+#
+# Un solo contenedor: nginx sirviendo los cuatro formularios.
+# Coolify lo construye desde este repositorio, le asigna el dominio y
+# emite el certificado; Traefik hace de proxy por delante.
+#
+# El receptor de leads y PostgreSQL NO estan aqui a proposito: viven en
+# el propio servidor, ya montados y con datos. El contenedor los alcanza
+# por host.docker.internal, asi que no hay que migrar la base.
+
+services:
+  formularios:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+
+    # Permite que nginx llegue al receptor de leads, que corre en el
+    # servidor y no en Docker. Sin esta linea, /api/ no resuelve.
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+
+    volumes:
+      - './public:/usr/share/nginx/html:ro'
+      - './nginx/default.conf:/etc/nginx/conf.d/default.conf:ro'
+
+    # Solo hacia dentro: quien publica al exterior es Traefik.
+    expose:
+      - '80'
+
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost/salud-web']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
